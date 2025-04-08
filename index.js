@@ -11,4 +11,23 @@ function createSquareDivs() {
 }
 createSquareDivs();
 
-// Handle the mouse to toggle click paint or no paint
+// Prompt the values for pixel
+// adjust the pixel sizes for every value pixel prompted
+
+// Change the pixel values
+// re-prompt
+
+// Handle the mouse to toggle click paint or no paint - for alternate every click
+// logic first with white to paint block - default state
+
+// Clear the painted pixels
+// back to all white
+
+// Erase pixels
+
+// EXTRA CREDIT:
+// Random color for paint
+// rather than squares being the same color throughout the grid, randomize the squares RGB values with each interaction.
+
+// EXTENDED FEATURE:
+// Color picker for paint
