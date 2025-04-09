@@ -1,5 +1,8 @@
 const container = document.querySelector(".container");
+const gridDivs = container.querySelectorAll("div");
 const changeBtn = document.querySelector("#change-btn");
+
+const CONTAINER_WIDTH_HEIGHT = 500;
 
 // Create div for pixels - start with 16x16 squares
 function createSquareDivs(pixel = 16) {
@@ -9,6 +12,12 @@ function createSquareDivs(pixel = 16) {
     const div = document.createElement("div");
     container.appendChild(div);
   }
+  //width & height for divs populated
+  const size = CONTAINER_WIDTH_HEIGHT / pixel;
+  const gridDivs = container.querySelectorAll("div");
+  gridDivs.forEach((div) => {
+    div.style.cssText = `width: ${size}px; height: ${size}px;`;
+  });
 }
 
 // Prompt the values for pixel

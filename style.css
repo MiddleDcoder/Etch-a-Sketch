@@ -19,8 +19,6 @@ body {
   height: 500px;
 }
 .container div {
-  width: 31.25px;
-  height: 31.25px;
   background-color: #000; /* temporary */
   border: 1px solid grey;
 }
