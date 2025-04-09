@@ -3,6 +3,7 @@ const changeBtn = document.querySelector("#change-btn");
 
 // Create div for pixels - start with 16x16 squares
 function createSquareDivs(pixel = 16) {
+  container.innerHTML = "";
   let pixels = pixel * pixel;
   for (let i = 0; i < pixels; i++) {
     const div = document.createElement("div");
@@ -17,8 +18,7 @@ changeBtn.addEventListener("click", () => {
   createSquareDivs(pixelValues);
 });
 
-// Change the pixel values
-// re-prompt
+// Change the pixel values re-prompt
 function changePixels() {
   let inputPixels = parseInt(
     prompt(
@@ -26,8 +26,16 @@ function changePixels() {
       "16"
     )
   );
+  // Validate input
+  if (isNaN(inputPixels) || inputPixels < 1 || inputPixels > 64) {
+    alert("Please enter a valid number between 1 and 64.");
+    return 16; // fallback value
+  }
   return inputPixels;
 }
+
+// Initialize default pixels grid
+createSquareDivs();
 
 // Handle the mouse to toggle click paint or no paint - for alternate every click
 // logic first with white to paint block - default state
