@@ -7,7 +7,9 @@ body {
   display: flex;
   justify-self: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
+  gap: 30px;
 }
 .container {
   box-shadow: 0 0 10px 10px #00000021;

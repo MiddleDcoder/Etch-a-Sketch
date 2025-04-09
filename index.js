@@ -1,21 +1,33 @@
 const container = document.querySelector(".container");
-let pixel = 16; // will update with prompt later
-let pixels = pixel * pixel;
+const changeBtn = document.querySelector("#change-btn");
 
 // Create div for pixels - start with 16x16 squares
-function createSquareDivs() {
+function createSquareDivs(pixel = 16) {
+  let pixels = pixel * pixel;
   for (let i = 0; i < pixels; i++) {
     const div = document.createElement("div");
     container.appendChild(div);
   }
 }
-createSquareDivs();
 
 // Prompt the values for pixel
 // adjust the pixel sizes for every value pixel prompted
+changeBtn.addEventListener("click", () => {
+  const pixelValues = changePixels();
+  createSquareDivs(pixelValues);
+});
 
 // Change the pixel values
 // re-prompt
+function changePixels() {
+  let inputPixels = parseInt(
+    prompt(
+      "Please enter how many pixels between 16 as default to 64 max: ",
+      "16"
+    )
+  );
+  return inputPixels;
+}
 
 // Handle the mouse to toggle click paint or no paint - for alternate every click
 // logic first with white to paint block - default state
