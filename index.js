@@ -27,19 +27,25 @@ changeBtn.addEventListener("click", () => {
   createSquareDivs(pixelValues);
 });
 
-// Change the pixel values re-prompt
+// Change the pixel values & re-prompt
 function changePixels() {
-  let inputPixels = parseInt(
-    prompt(
-      "Please enter how many pixels between 16 as default to 64 max: ",
-      "16"
-    )
-  );
-  // Validate input
-  if (isNaN(inputPixels) || inputPixels < 1 || inputPixels > 64) {
-    alert("Please enter a valid number between 1 and 64.");
-    return 16; // fallback value
-  }
+  let inputPixels;
+  let isValid = false;
+  do {
+    inputPixels = parseInt(
+      prompt(
+        "Please enter how many pixels between 16 as default to 64 max: ",
+        "16"
+      )
+    );
+    // Validate input
+    if (isNaN(inputPixels) || inputPixels < 1 || inputPixels > 64) {
+      alert("Please enter a valid number between 1 and 64.");
+    } else {
+      isValid = true;
+    }
+  } while (!isValid);
+
   return inputPixels;
 }
 
