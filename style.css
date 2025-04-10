@@ -17,6 +17,7 @@ body {
   flex-wrap: wrap;
   width: 500px;
   height: 500px;
+  cursor: cell;
 }
 .container div {
   /* background-color: #000; */

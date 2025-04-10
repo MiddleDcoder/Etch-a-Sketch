@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 const changeBtn = document.querySelector("#change-btn");
-let gridDivs;
+let gridDivs,
+  isDrawing = false;
 
 const CONTAINER_WIDTH_HEIGHT = 500;
 
@@ -59,7 +60,17 @@ createSquareDivs();
 // logic first with white to paint block - default state
 function paintPixels() {
   gridDivs.forEach((div) => {
+    div.addEventListener("mousedown", () => {
+      isDrawing = true;
+      div.style.backgroundColor = "black";
+    });
+
+    div.addEventListener("mouseup", () => {
+      isDrawing = false;
+    });
+
     div.addEventListener("mouseenter", () => {
+      if (!isDrawing) return; // stop drawing
       div.style.backgroundColor = "black";
     });
   });
