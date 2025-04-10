@@ -3,6 +3,7 @@ const changeBtn = document.querySelector("#change-btn");
 const randomBtn = document.querySelector("#random-btn");
 const blackBtn = document.querySelector("#black-btn");
 const clearBtn = document.querySelector("#clear-btn");
+const eraserBtn = document.querySelector("#eraser-btn");
 
 let gridDivs;
 let color = "default";
@@ -97,25 +98,28 @@ function setCurrentColor(div) {
   if (color === "random") {
     return (div.style.backgroundColor = randomRGB());
   }
+  if (color === "eraser") {
+    return (div.style.backgroundColor = "white");
+  }
 }
+// Set paint to random colors
 randomBtn.addEventListener("click", () => {
   color = "random";
 });
-
+// Back/set to default paint black
 blackBtn.addEventListener("click", () => {
   color = "default";
 });
-
+// Erase pixels
+eraserBtn.addEventListener("click", () => {
+  color = "eraser";
+});
+// Clear the painted pixels
 clearBtn.addEventListener("click", () => {
   gridDivs.forEach((div) => {
     div.style.backgroundColor = "white";
   });
 });
-
-// Clear the painted pixels
-// back to all white
-
-// Erase pixels
 
 // Progressive darkening effect
 // 10% each 1 interaction - uses opacity
