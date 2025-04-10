@@ -66,18 +66,19 @@ function paintPixels() {
   gridDivs.forEach((div) => {
     div.addEventListener("mousedown", () => {
       isDrawing = true;
-      div.style.cursor = "crosshair";
       setCurrentColor(div);
+      container.style.cursor = "crosshair";
     });
 
     div.addEventListener("mouseup", () => {
       isDrawing = false;
+      container.style.cursor = "default";
     });
 
     div.addEventListener("mouseenter", () => {
       if (!isDrawing) return; // stop drawing
-      div.style.cursor = "crosshair";
       setCurrentColor(div);
+      container.style.cursor = "crosshair";
     });
   });
 }
