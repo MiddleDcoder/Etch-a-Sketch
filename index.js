@@ -85,7 +85,13 @@ function paintPixels() {
 // EXTRA CREDIT:
 // Random color for paint
 // rather than squares being the same color throughout the grid, randomize the squares RGB values with each interaction.
-
+const randomNum = () => {
+  return Math.floor(Math.random() * 255);
+};
+function randomRGB() {
+  return `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
+}
+console.log(randomRGB());
 // Progressive darkening effect
 // 10% each 1 interaction - uses opacity
 
