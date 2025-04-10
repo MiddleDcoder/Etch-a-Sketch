@@ -2,6 +2,7 @@ const container = document.querySelector(".container");
 const changeBtn = document.querySelector("#change-btn");
 const randomBtn = document.querySelector("#random-btn");
 const blackBtn = document.querySelector("#black-btn");
+const clearBtn = document.querySelector("#clear-btn");
 
 let gridDivs;
 let color = "default";
@@ -102,6 +103,12 @@ randomBtn.addEventListener("click", () => {
 
 blackBtn.addEventListener("click", () => {
   color = "default";
+});
+
+clearBtn.addEventListener("click", () => {
+  gridDivs.forEach((div) => {
+    div.style.backgroundColor = "white";
+  });
 });
 
 // Clear the painted pixels
