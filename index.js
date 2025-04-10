@@ -85,9 +85,7 @@ function paintPixels() {
 // EXTRA CREDIT:
 // Random color for paint
 // rather than squares being the same color throughout the grid, randomize the squares RGB values with each interaction.
-const randomNum = () => {
-  return Math.floor(Math.random() * 255);
-};
+const randomNum = () => Math.floor(Math.random() * 255);
 function randomRGB() {
   return `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
 }
