@@ -1,8 +1,12 @@
 const container = document.querySelector(".container");
 const changeBtn = document.querySelector("#change-btn");
-let gridDivs;
-let isDrawing = false;
+const randomBtn = document.querySelector("#random-btn");
+const blackBtn = document.querySelector("#black-btn");
 
+let gridDivs;
+let color = "default";
+let isDrawing = false;
+const DEFAULT_COLOR = "black";
 const CONTAINER_WIDTH_HEIGHT = 800;
 
 // Create div for pixels - start with 16x16 squares
@@ -56,14 +60,13 @@ function changePixels() {
 // Initialize default pixels grid
 createSquareDivs();
 
-// Handle the mouse to toggle click paint or no paint - for alternate every click
-// logic first with white to paint block - default state
+// Handle the mouse to paint on mousedown and mouseenter no paint on mouseup
 function paintPixels() {
   gridDivs.forEach((div) => {
     div.addEventListener("mousedown", () => {
       isDrawing = true;
-      div.style.backgroundColor = "black";
       div.style.cursor = "crosshair";
+      setCurrentColor(div);
     });
 
     div.addEventListener("mouseup", () => {
@@ -72,24 +75,40 @@ function paintPixels() {
 
     div.addEventListener("mouseenter", () => {
       if (!isDrawing) return; // stop drawing
-      div.style.backgroundColor = "black";
       div.style.cursor = "crosshair";
+      setCurrentColor(div);
     });
   });
 }
+
+// Random color for paint
+const randomColorNum = () => Math.floor(Math.random() * 255);
+function randomRGB() {
+  return `rgb(${randomColorNum()}, ${randomColorNum()}, ${randomColorNum()})`;
+}
+
+// Set background color state
+function setCurrentColor(div) {
+  if (color === "default") {
+    return (div.style.backgroundColor = DEFAULT_COLOR);
+  }
+  if (color === "random") {
+    return (div.style.backgroundColor = randomRGB());
+  }
+}
+randomBtn.addEventListener("click", () => {
+  color = "random";
+});
+
+blackBtn.addEventListener("click", () => {
+  color = "default";
+});
+
 // Clear the painted pixels
 // back to all white
 
 // Erase pixels
 
-// EXTRA CREDIT:
-// Random color for paint
-// rather than squares being the same color throughout the grid, randomize the squares RGB values with each interaction.
-const randomNum = () => Math.floor(Math.random() * 255);
-function randomRGB() {
-  return `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
-}
-console.log(randomRGB());
 // Progressive darkening effect
 // 10% each 1 interaction - uses opacity
 
