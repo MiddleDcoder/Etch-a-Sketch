@@ -1,6 +1,6 @@
 const container = document.querySelector(".container");
-const gridDivs = container.querySelectorAll("div");
 const changeBtn = document.querySelector("#change-btn");
+let gridDivs;
 
 const CONTAINER_WIDTH_HEIGHT = 500;
 
@@ -14,14 +14,14 @@ function createSquareDivs(pixel = 16) {
   }
   //width & height for divs populated
   const size = CONTAINER_WIDTH_HEIGHT / pixel;
-  const gridDivs = container.querySelectorAll("div");
+  gridDivs = container.querySelectorAll("div");
   gridDivs.forEach((div) => {
     div.style.cssText = `width: ${size}px; height: ${size}px;`;
   });
+  paintPixels();
 }
 
-// Prompt the values for pixel
-// adjust the pixel sizes for every value pixel prompted
+// Trigger button to call the prompt and create divs
 changeBtn.addEventListener("click", () => {
   const pixelValues = changePixels();
   createSquareDivs(pixelValues);
@@ -29,15 +29,18 @@ changeBtn.addEventListener("click", () => {
 
 // Change the pixel values & re-prompt
 function changePixels() {
-  let inputPixels;
+  let inputPixels, input;
   let isValid = false;
   do {
-    inputPixels = parseInt(
-      prompt(
-        "Please enter how many pixels between 16 as default to 64 max: ",
-        "16"
-      )
+    input = prompt(
+      "Please enter how many pixels between 16 as default to 64 max: ",
+      "16"
     );
+    // cancel prompt action and back to default
+    if (input === null) return 16;
+
+    inputPixels = parseInt(input);
+
     // Validate input
     if (isNaN(inputPixels) || inputPixels < 1 || inputPixels > 64) {
       alert("Please enter a valid number between 1 and 64.");
@@ -54,7 +57,13 @@ createSquareDivs();
 
 // Handle the mouse to toggle click paint or no paint - for alternate every click
 // logic first with white to paint block - default state
-
+function paintPixels() {
+  gridDivs.forEach((div) => {
+    div.addEventListener("mouseenter", () => {
+      div.style.backgroundColor = "black";
+    });
+  });
+}
 // Clear the painted pixels
 // back to all white
 

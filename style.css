@@ -19,6 +19,6 @@ body {
   height: 500px;
 }
 .container div {
-  background-color: #000; /* temporary */
+  /* background-color: #000; */
   border: 1px solid grey;
 }
