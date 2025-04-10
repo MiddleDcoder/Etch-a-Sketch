@@ -15,9 +15,9 @@ body {
   box-shadow: 0 0 10px 10px #00000021;
   display: flex;
   flex-wrap: wrap;
-  width: 500px;
-  height: 500px;
-  cursor: cell;
+  width: 800px;
+  height: 800px;
+  cursor: default;
 }
 .container div {
   /* background-color: #000; */
