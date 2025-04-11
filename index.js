@@ -8,6 +8,7 @@ const progressiveBtn = document.querySelector("#progressive-btn");
 
 let gridDivs;
 let color = "default";
+let progressive = "off";
 let isDrawing = false;
 const DEFAULT_COLOR = "black";
 const CONTAINER_WIDTH_HEIGHT = 800;
@@ -94,13 +95,13 @@ function randomRGB() {
 // Set background color state
 function setCurrentColor(div) {
   if (color === "default") {
-    return (div.style.backgroundColor = DEFAULT_COLOR);
+    div.style.backgroundColor = DEFAULT_COLOR;
   }
   if (color === "random") {
-    return (div.style.backgroundColor = randomRGB());
+    div.style.backgroundColor = randomRGB();
   }
   if (color === "eraser") {
-    return (div.style.backgroundColor = "white");
+    div.style.backgroundColor = "white";
   }
 }
 // Set paint to random colors
@@ -128,8 +129,18 @@ progressiveBtn.addEventListener("click", (e) => {
   const text = e.target.textContent;
   if (text === "Progressive On") {
     progressiveBtn.textContent = "Progressive Off";
-  } else progressiveBtn.textContent = "Progressive On";
+    progressive = "on";
+  } else {
+    progressiveBtn.textContent = "Progressive On";
+    progressive = "off";
+  }
 });
+
+function setProgressive(div) {
+  if (progressive === "on") {
+    div.style.opacity = "10%";
+  } else div.style.opacity = "100%";
+}
 
 // EXTENDED FEATURE:
 // Color picker for paint
