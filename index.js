@@ -70,6 +70,7 @@ function paintPixels() {
     div.addEventListener("mousedown", () => {
       isDrawing = true;
       setCurrentColor(div);
+      setProgressive(div);
       container.style.cursor = "crosshair";
     });
 
@@ -81,6 +82,7 @@ function paintPixels() {
     div.addEventListener("mouseenter", () => {
       if (!isDrawing) return; // stop drawing
       setCurrentColor(div);
+      setProgressive(div);
       container.style.cursor = "crosshair";
     });
   });
