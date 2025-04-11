@@ -4,6 +4,7 @@ const randomBtn = document.querySelector("#random-btn");
 const blackBtn = document.querySelector("#black-btn");
 const clearBtn = document.querySelector("#clear-btn");
 const eraserBtn = document.querySelector("#eraser-btn");
+const progressiveBtn = document.querySelector("#progressive-btn");
 
 let gridDivs;
 let color = "default";
@@ -123,6 +124,12 @@ clearBtn.addEventListener("click", () => {
 
 // Progressive darkening effect
 // 10% each 1 interaction - uses opacity
+progressiveBtn.addEventListener("click", (e) => {
+  const text = e.target.textContent;
+  if (text === "Progressive On") {
+    progressiveBtn.textContent = "Progressive Off";
+  } else progressiveBtn.textContent = "Progressive On";
+});
 
 // EXTENDED FEATURE:
 // Color picker for paint
