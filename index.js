@@ -94,16 +94,19 @@ function randomRGB() {
 
 // Set background color state
 function setCurrentColor(div) {
-  if (color === "default") {
-    div.style.backgroundColor = DEFAULT_COLOR;
-  }
-  if (color === "random") {
-    div.style.backgroundColor = randomRGB();
-  }
-  if (color === "eraser") {
-    div.style.backgroundColor = "white";
+  switch (color) {
+    case "random":
+      div.style.backgroundColor = randomRGB();
+      break;
+    case "eraser":
+      div.style.backgroundColor = "white";
+      break;
+    default:
+      div.style.backgroundColor = DEFAULT_COLOR;
+      break;
   }
 }
+
 // Set paint to random colors
 randomBtn.addEventListener("click", () => {
   color = "random";
