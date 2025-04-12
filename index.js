@@ -9,6 +9,7 @@ const progressiveBtn = document.querySelector("#progressive-btn");
 let gridDivs;
 let color = "default";
 let progressive = "off";
+let currentOpacity = 0;
 let isDrawing = false;
 const DEFAULT_COLOR = "black";
 const CONTAINER_WIDTH_HEIGHT = 800;
@@ -69,8 +70,8 @@ function paintPixels() {
   gridDivs.forEach((div) => {
     div.addEventListener("mousedown", () => {
       isDrawing = true;
-      setCurrentColor(div);
       setProgressive(div);
+      setCurrentColor(div);
       container.style.cursor = "crosshair";
     });
 
@@ -81,8 +82,8 @@ function paintPixels() {
 
     div.addEventListener("mouseenter", () => {
       if (!isDrawing) return; // stop drawing
-      setCurrentColor(div);
       setProgressive(div);
+      setCurrentColor(div);
       container.style.cursor = "crosshair";
     });
   });
@@ -101,7 +102,7 @@ function setCurrentColor(div) {
       div.style.backgroundColor = randomRGB();
       break;
     case "eraser":
-      div.style.backgroundColor = "white";
+      div.style.backgroundColor = "";
       break;
     default:
       div.style.backgroundColor = DEFAULT_COLOR;
@@ -124,12 +125,11 @@ eraserBtn.addEventListener("click", () => {
 // Clear the painted pixels
 clearBtn.addEventListener("click", () => {
   gridDivs.forEach((div) => {
-    div.style.backgroundColor = "white";
+    div.style.backgroundColor = "";
   });
 });
 
-// Progressive darkening effect
-// 10% each 1 interaction - uses opacity
+// Progressive darkening effect trigger
 progressiveBtn.addEventListener("click", (e) => {
   const text = e.target.textContent;
   if (text === "Progressive On") {
@@ -140,11 +140,15 @@ progressiveBtn.addEventListener("click", (e) => {
     progressive = "off";
   }
 });
-
+// Progressive darkening effect
+// 10% each 1 interaction - uses opacity
 function setProgressive(div) {
   if (progressive === "on") {
-    div.style.opacity = "10%";
-  } else div.style.opacity = "100%";
+    if (currentOpacity < 1) {
+      currentOpacity = Math.min(currentOpacity + 0.1, 1);
+      div.style.opacity = currentOpacity;
+    }
+  } else return;
 }
 
 // EXTENDED FEATURE:
