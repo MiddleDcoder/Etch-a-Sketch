@@ -105,6 +105,7 @@ function setCurrentColor(div) {
       break;
     case "eraser":
       div.style.backgroundColor = "";
+      div.style.opacity = "";
       break;
     default:
       div.style.backgroundColor = DEFAULT_COLOR;
@@ -128,6 +129,8 @@ eraserBtn.addEventListener("click", () => {
 clearBtn.addEventListener("click", () => {
   gridDivs.forEach((div) => {
     div.style.backgroundColor = "";
+    div.style.opacity = "";
+    div.currentOpacity = 0; // reset saved opacity to custom property
   });
 });
 
