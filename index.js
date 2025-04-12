@@ -9,7 +9,7 @@ const progressiveBtn = document.querySelector("#progressive-btn");
 let gridDivs;
 let color = "default";
 let progressive = "off";
-let currentOpacity = 0;
+let lastDiv = null;
 let isDrawing = false;
 const DEFAULT_COLOR = "black";
 const CONTAINER_WIDTH_HEIGHT = 800;
@@ -68,6 +68,8 @@ createSquareDivs();
 // Handle the mouse to paint on mousedown and mouseenter no paint on mouseup
 function paintPixels() {
   gridDivs.forEach((div) => {
+    div.currentOpacity = 0; // custom property to each div
+
     div.addEventListener("mousedown", () => {
       isDrawing = true;
       setProgressive(div);
@@ -144,11 +146,14 @@ progressiveBtn.addEventListener("click", (e) => {
 // 10% each 1 interaction - uses opacity
 function setProgressive(div) {
   if (progressive === "on") {
-    if (currentOpacity < 1) {
-      currentOpacity = Math.min(currentOpacity + 0.1, 1);
-      div.style.opacity = currentOpacity;
-    }
-  } else return;
+    // increase opacity by 0.1 (1 max)
+    div.currentOpacity = Math.min(div.currentOpacity + 0.1, 1);
+    // set the div opacity after filtering above
+    div.style.opacity = div.currentOpacity;
+    // save the interacted div as lastDiv
+    lastDiv = div;
+    console.log(lastDiv);
+  } else return; // stop if progressive is off
 }
 
 // EXTENDED FEATURE:
