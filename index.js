@@ -65,8 +65,7 @@ function changePixels() {
 
 // Initialize default pixels grid
 createSquareDivs();
-const num = container.querySelectorAll("div").length;
-console.log(num);
+
 // Handle the mouse to paint on mousedown and mouseenter no paint on mouseup
 function paintPixels() {
   gridDivs.forEach((div) => {
