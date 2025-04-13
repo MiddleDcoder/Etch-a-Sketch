@@ -7,7 +7,7 @@ const eraserBtn = document.querySelector("#eraser-btn");
 const progressiveBtn = document.querySelector("#progressive-btn");
 const colorPicker = document.querySelector("#color-picker");
 
-let gridDivs, colorPickerValue;
+let gridDivs, colorPickerValue, intervalRandomColor;
 let color = "default";
 let progressive = "off";
 let isDrawing = false;
@@ -119,20 +119,27 @@ function setCurrentColor(div) {
 // Set paint to random colors
 randomBtn.addEventListener("click", () => {
   color = "random";
+  intervalRandomColor = startInterval();
 });
 // Back/set to default paint black
 blackBtn.addEventListener("click", () => {
   color = "default";
+  container.style.borderColor = DEFAULT_COLOR;
+  clearInterval(intervalRandomColor);
 });
 // Erase pixels
 eraserBtn.addEventListener("click", () => {
   color = "eraser";
+  container.style.borderColor = "white";
+  clearInterval(intervalRandomColor);
 });
 // Color picker for paint
 colorPicker.addEventListener("change", (e) => {
   color = "color-picker";
   colorPickerValue = e.target.value;
   colorPicker.style.backgroundColor = colorPickerValue;
+  container.style.borderColor = colorPickerValue;
+  clearInterval(intervalRandomColor);
 });
 
 // Clear the painted pixels
@@ -166,7 +173,12 @@ function setProgressive(div) {
   } else return; // stop if progressive is off
 }
 
-// Random Color BG for random button
-setInterval(() => {
-  randomBtn.style.backgroundColor = randomRGB();
-}, 1000);
+// Interval color (BG & Border) for selecting random button
+function startInterval() {
+  const intervalId = setInterval(() => {
+    container.style.borderColor = randomRGB();
+    randomBtn.style.backgroundColor = randomRGB();
+  }, 1000);
+
+  return intervalId;
+}

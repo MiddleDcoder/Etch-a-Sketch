@@ -33,7 +33,7 @@ button {
   background-color: rgb(230, 224, 224);
 }
 #random-btn {
-  transition: background 1s ease-in-out;
+  transition: background-color 1.5s ease-in-out;
 }
 input {
   vertical-align: middle;
@@ -44,6 +44,7 @@ input:hover {
   color: white;
 }
 .container {
-  border: 50px solid #ef6f6f;
-  border-radius: 25px;
+  border: 50px solid;
+  border-radius: 18px;
+  transition: border-color 1.5s ease-in-out;
 }
