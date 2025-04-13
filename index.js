@@ -6,7 +6,6 @@ const clearBtn = document.querySelector("#clear-btn");
 const eraserBtn = document.querySelector("#eraser-btn");
 const progressiveBtn = document.querySelector("#progressive-btn");
 const colorPicker = document.querySelector("#color-picker");
-const allSelections = document.querySelector(".selection");
 
 let gridDivs, colorPickerValue;
 let color = "default";

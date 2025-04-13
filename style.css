@@ -43,3 +43,7 @@ input:hover {
   background-color: green;
   color: white;
 }
+.container {
+  border: 50px solid #ef6f6f;
+  border-radius: 25px;
+}
