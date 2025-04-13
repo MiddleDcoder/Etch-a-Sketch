@@ -97,7 +97,7 @@ function randomRGB() {
   return `rgb(${randomColorNum()}, ${randomColorNum()}, ${randomColorNum()})`;
 }
 
-// Set background color state
+// Set current brush color state
 function setCurrentColor(div) {
   switch (color) {
     case "random":
@@ -132,6 +132,9 @@ eraserBtn.addEventListener("click", () => {
   color = "eraser";
   container.style.borderColor = "white";
   clearInterval(intervalRandomColor);
+  gridDivs.forEach((div) => {
+    div.currentOpacity = 0; // reset
+  });
 });
 // Color picker for paint
 colorPicker.addEventListener("change", (e) => {
