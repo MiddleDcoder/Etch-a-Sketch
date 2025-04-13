@@ -19,6 +19,7 @@ body {
   width: 800px;
   height: 800px;
   cursor: default;
+  box-sizing: content-box;
 }
 .container div {
   /* background-color: #000; */

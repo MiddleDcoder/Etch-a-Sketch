@@ -22,6 +22,7 @@ function createSquareDivs(pixel = 16) {
     const div = document.createElement("div");
     container.appendChild(div);
   }
+
   //width & height for divs populated
   const size = CONTAINER_WIDTH_HEIGHT / pixel;
   gridDivs = container.querySelectorAll("div");
@@ -64,7 +65,8 @@ function changePixels() {
 
 // Initialize default pixels grid
 createSquareDivs();
-
+const num = container.querySelectorAll("div").length;
+console.log(num);
 // Handle the mouse to paint on mousedown and mouseenter no paint on mouseup
 function paintPixels() {
   gridDivs.forEach((div) => {
