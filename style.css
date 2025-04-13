@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   height: 100vh;
   gap: 30px;
+  padding: 5%;
 }
 .container {
   box-shadow: 0 0 10px 10px #00000021;
@@ -22,4 +23,23 @@ body {
 .container div {
   /* background-color: #000; */
   border: 0.5px solid rgba(128, 128, 128, 0.05);
+}
+button {
+  padding: 4px 8px;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 25px;
+  border: none;
+  background-color: rgb(230, 224, 224);
+}
+#random-btn {
+  transition: background 1s ease-in-out;
+}
+input {
+  vertical-align: middle;
+}
+button:hover,
+input:hover {
+  background-color: green;
+  color: white;
 }

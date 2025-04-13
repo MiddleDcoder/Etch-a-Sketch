@@ -6,11 +6,11 @@ const clearBtn = document.querySelector("#clear-btn");
 const eraserBtn = document.querySelector("#eraser-btn");
 const progressiveBtn = document.querySelector("#progressive-btn");
 const colorPicker = document.querySelector("#color-picker");
+const allSelections = document.querySelector(".selection");
 
 let gridDivs, colorPickerValue;
 let color = "default";
 let progressive = "off";
-let lastDiv = null;
 let isDrawing = false;
 const DEFAULT_COLOR = "black";
 const CONTAINER_WIDTH_HEIGHT = 800;
@@ -133,6 +133,7 @@ eraserBtn.addEventListener("click", () => {
 colorPicker.addEventListener("change", (e) => {
   color = "color-picker";
   colorPickerValue = e.target.value;
+  colorPicker.style.backgroundColor = colorPickerValue;
 });
 
 // Clear the painted pixels
@@ -163,7 +164,10 @@ function setProgressive(div) {
     div.currentOpacity = Math.min(div.currentOpacity + 0.1, 1);
     // set the div opacity after filtering above
     div.style.opacity = div.currentOpacity;
-    // save the interacted div as lastDiv
-    lastDiv = div;
   } else return; // stop if progressive is off
 }
+
+// Random Color BG for random button
+setInterval(() => {
+  randomBtn.style.backgroundColor = randomRGB();
+}, 1000);
