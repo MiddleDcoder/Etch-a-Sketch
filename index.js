@@ -5,8 +5,9 @@ const blackBtn = document.querySelector("#black-btn");
 const clearBtn = document.querySelector("#clear-btn");
 const eraserBtn = document.querySelector("#eraser-btn");
 const progressiveBtn = document.querySelector("#progressive-btn");
+const colorPicker = document.querySelector("#color-picker");
 
-let gridDivs;
+let gridDivs, colorPickerValue;
 let color = "default";
 let progressive = "off";
 let lastDiv = null;
@@ -107,6 +108,9 @@ function setCurrentColor(div) {
       div.style.backgroundColor = "";
       div.style.opacity = "";
       break;
+    case "color-picker":
+      div.style.backgroundColor = colorPickerValue;
+      break;
     default:
       div.style.backgroundColor = DEFAULT_COLOR;
       break;
@@ -125,6 +129,12 @@ blackBtn.addEventListener("click", () => {
 eraserBtn.addEventListener("click", () => {
   color = "eraser";
 });
+// Color picker for paint
+colorPicker.addEventListener("change", (e) => {
+  color = "color-picker";
+  colorPickerValue = e.target.value;
+});
+
 // Clear the painted pixels
 clearBtn.addEventListener("click", () => {
   gridDivs.forEach((div) => {
@@ -155,9 +165,5 @@ function setProgressive(div) {
     div.style.opacity = div.currentOpacity;
     // save the interacted div as lastDiv
     lastDiv = div;
-    console.log(lastDiv);
   } else return; // stop if progressive is off
 }
-
-// EXTENDED FEATURE:
-// Color picker for paint
