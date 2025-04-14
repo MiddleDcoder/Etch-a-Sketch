@@ -137,14 +137,18 @@ eraserBtn.addEventListener("click", () => {
     div.currentOpacity = 0; // reset
   });
 });
-// Color picker for paint
-colorPicker.addEventListener("change", (e) => {
+// Color picker for paint - onChange, onInput, onClick
+colorPicker.addEventListener("change", colorPickerUpdate);
+colorPicker.addEventListener("input", colorPickerUpdate);
+colorPicker.addEventListener("click", colorPickerUpdate);
+// Update color picked based events above
+function colorPickerUpdate(e) {
   color = "color-picker";
   colorPickerValue = e.target.value;
   colorPicker.style.backgroundColor = colorPickerValue;
   container.style.borderColor = colorPickerValue;
   clearInterval(intervalRandomColor);
-});
+}
 
 // Clear the painted pixels
 clearBtn.addEventListener("click", () => {
