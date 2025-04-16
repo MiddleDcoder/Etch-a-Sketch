@@ -23,7 +23,7 @@ body {
 .container div {
   /* background-color: #000; */
   border: 0.5px solid rgba(128, 128, 128, 0.05);
-  cursor: url("/assets/cursor.cur"), auto;
+  cursor: url("/cursor.cur"), auto;
 }
 button {
   padding: 4px 8px;
