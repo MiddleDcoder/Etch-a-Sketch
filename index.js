@@ -75,17 +75,19 @@ function paintPixels() {
       isDrawing = true;
       setProgressive(div);
       setCurrentColor(div);
+      container.style.cursor = `url("cursor.cur"), auto`;
     });
 
     div.addEventListener("mouseup", () => {
       isDrawing = false;
-      div.style.cursor = "default";
+      container.style.cursor = "default";
     });
 
     div.addEventListener("mouseenter", () => {
       if (!isDrawing) return; // stop drawing
       setProgressive(div);
       setCurrentColor(div);
+      container.style.cursor = `url("cursor.cur"), auto`;
     });
   });
 }
