@@ -48,3 +48,10 @@ input:hover {
   border-radius: 18px;
   transition: border-color 1.5s ease-in-out;
 }
+h1 {
+  font-family: cursive;
+  color: yellow;
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 4px 4px black;
+}
