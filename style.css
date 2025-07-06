@@ -40,8 +40,8 @@ input {
 }
 button:hover,
 input:hover {
-  background-color: green;
-  color: white;
+  background-color: yellow;
+  color: black;
 }
 .container {
   border: 50px solid;
